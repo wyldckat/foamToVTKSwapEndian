@@ -46,7 +46,7 @@ wmake foamToVTKSwapEndian
 For getting and building from zip:
 ```
 wget "https://github.com/wyldckat/foamToVTKSwapEndian/archive/of21x.zip" -O foamToVTKSwapEndian.zip
-cd foamToVTKSwapEndian-of22x
+cd foamToVTKSwapEndian-of21x
 wmake
 ```
 
