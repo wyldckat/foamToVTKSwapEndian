@@ -12,4 +12,4 @@ writeSurfFields.C
 vtkMesh.C
 vtkTopo.C
 
-EXE = $(FOAM_APPBIN)/foamToVTK
+EXE = $(FOAM_USER_APPBIN)/foamToVTKSwapEndian

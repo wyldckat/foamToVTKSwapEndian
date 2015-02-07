@@ -53,6 +53,11 @@ namespace Foam
 
 class writeFuns
 {
+  
+    // Private data
+
+        static bool otherEndianMode;
+
     // Private Member Functions
 
         // Swap halves of word.
@@ -60,8 +65,11 @@ class writeFuns
             static void swapWord(label& word32);
             static void swapWords(const label nWords, label* words32);
 
-
 public:
+  
+    // set otherEndianMode flag
+    
+        static void setOtherEndian(const bool oppositeEndianMode);
 
     // Write ascii or binary. If binary optionally in-place swaps argument
 

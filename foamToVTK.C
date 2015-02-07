@@ -318,6 +318,12 @@ int main(int argc, char *argv[])
         "useTimeName",
         "use the time name instead of the time index when naming the files"
     );
+    argList::addBoolOption
+    (
+        "otherEndian",
+        "e.g. if your system is in Big Endian, it'll write in Little Endian."
+        "Same for vice-versa."
+    );
 
     #include "setRootCase.H"
     #include "createTime.H"
@@ -330,6 +336,9 @@ int main(int argc, char *argv[])
 
     // decomposition of polyhedral cells into tets/pyramids cells
     vtkTopo::decomposePoly     = !args.optionFound("poly");
+    
+    // turn on byte swap for other Endian mode
+    writeFuns::setOtherEndian(args.optionFound("otherEndian"));
 
     if (binary && (sizeof(floatScalar) != 4 || sizeof(label) != 4))
     {

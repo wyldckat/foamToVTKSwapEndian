@@ -51,6 +51,11 @@ License
 #   error "Please add to compilation options"
 #endif
 
+// * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
+
+bool Foam::writeFuns::otherEndianMode = false;
+
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::writeFuns::swapWord(label& word32)
@@ -76,6 +81,16 @@ void Foam::writeFuns::swapWords(const label nWords, label* words32)
 }
 
 
+void Foam::writeFuns::setOtherEndian(const bool oppositeEndianMode)
+{
+#   ifdef LITTLEENDIAN
+    otherEndianMode = !oppositeEndianMode;
+#   else
+    otherEndianMode = oppositeEndianMode;
+#   endif
+}
+
+
 void Foam::writeFuns::write
 (
     std::ostream& os,
@@ -85,9 +100,11 @@ void Foam::writeFuns::write
 {
     if (binary)
     {
-#       ifdef LITTLEENDIAN
-        swapWords(fField.size(), reinterpret_cast<label*>(fField.begin()));
-#       endif
+        if(otherEndianMode)
+        {
+            swapWords(fField.size(), reinterpret_cast<label*>(fField.begin()));
+        }
+
         os.write
         (
             reinterpret_cast<char*>(fField.begin()),
@@ -138,9 +155,11 @@ void Foam::writeFuns::write
 {
     if (binary)
     {
-#       ifdef LITTLEENDIAN
-        swapWords(elems.size(), reinterpret_cast<label*>(elems.begin()));
-#       endif
+        if(otherEndianMode)
+        {
+            swapWords(elems.size(), reinterpret_cast<label*>(elems.begin()));
+        }
+
         os.write
         (
             reinterpret_cast<char*>(elems.begin()),
