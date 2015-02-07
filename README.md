@@ -24,3 +24,37 @@ This is bound to the same license as OpenFOAM, namely GNU Public License v3. Quo
     You should have received a copy of the GNU General Public License
     along with OpenFOAM. If not, see <http://www.gnu.org/licenses/>.
 
+
+How to get+build foamToVTKSwapEndian
+====================================
+
+Check the list of branches that exist. So far:
+
+  * of21x
+
+
+For example, these instructions are for OpenFOAM 2.1.x:
+
+For getting and building from git:
+```
+git clone git://github.com/wyldckat/foamToVTKSwapEndian.git
+cd foamToVTKSwapEndian
+git checkout of21x
+wmake foamToVTKSwapEndian
+```
+
+For getting and building from zip:
+```
+wget "https://github.com/wyldckat/foamToVTKSwapEndian/archive/of21x.zip" -O foamToVTKSwapEndian.zip
+cd foamToVTKSwapEndian-of22x
+wmake
+```
+
+
+How to use it
+=============
+
+A new option exists `-otherEndian`:
+```
+foamToVTKSwapEndian -otherEndian
+```
