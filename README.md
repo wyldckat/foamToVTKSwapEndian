@@ -3,6 +3,8 @@ foamToVTKSwapEndian
 
 Experimental modified foamToVTK from OpenFOAM, for exporting data with the opposite endianess. This was created for this thread at CFD-Online's forums: http://www.cfd-online.com/Forums/openfoam-paraview/147729-big-endian-little-endian-conversion-how-do-openfoam.html
 
+This [git repository](https://github.com/wyldckat/foamToVTKSwapEndian) was brought to you by Bruno Santos (wyldckat@github working at [blueCAPE Lda](http://www.bluecape.com.pt)).
+
 
 Disclaimer and License
 ======================
